@@ -3,8 +3,6 @@ header {
 
     top: 0;
 
-    box-shadow: 1px 1px 4px #dddddd;
-
     padding: 0% 1%;
 
     height: 72px;
@@ -14,6 +12,10 @@ header {
     justify-content: space-between;
 
     background-color: #ffffff;
+}
+
+.header-navigation-with-shadow {
+    box-shadow: 1px 1px 4px #dddddd;
 }
 
 .header-navigation {
