@@ -1,18 +1,38 @@
-.title {
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,700&family=Roboto+Mono&family=Roboto+Slab:wght@700&display=swap');
 
-    margin-bottom: 1%;
+h1 {
 
-    font-size: x-large;
+    margin-bottom: 2%;
+
+    font-size: 32px;
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+h2{
+    margin-bottom: 2%;
+
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', sans-serif;
 }
 
 .paragraph {
 
     text-align: justify;
-    font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 2%;
+    font-family: 'Roboto Flex', sans-serif;
+    margin-bottom: 4%;
+    margin-top: 2%;
+    line-height: 20px;
+    width: 100%;
+}
 
+.p-code{
+    text-align: justify;
+    font-family: 'Roboto Flex', sans-serif;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    line-height: 25px;
     width: 100%;
 }
 
@@ -26,7 +46,7 @@
     border: 1px solid #808080;
     border-radius: 5px;
 
-    font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', monospace;
+    font-family: 'Roboto Mono', monospace;
 
     background-color: #F7F5F2;
     color: #808080;
