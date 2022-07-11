@@ -1,0 +1,130 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css//components/drag-drop.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+        </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/pop-up.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/graficos.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Drag and Drop</h1>
+            <p class="paragraph">
+                Drag and drop fornece um mecanismo visual simples que os usuários podem usar para transferir informações entre e dentro dos aplicativos. Drag and drop fornece um mecanismo visual simples que os usuários podem usar para transferir informações entre e dentro dos aplicativos.
+                <br/><br/>As operações de Drag and drop também são suportadas por muitos dos controles do Qt, como as visualizações de itens e a estrutura de visualização de gráficos, bem como controles de edição para Qt Widgets e Qt Quick. Mais informações sobre visualizações de itens e visualização de gráficos estão disponíveis em Usando arrastar e soltar com visualizações de itens e Estrutura de visualização de gráficos.
+                <br/><br/>Este artigo demonstra como implementar arrastar e soltar um texto de QListWidget em um QGraphicsItem. Duas variantes do problema são apresentadas:
+                <br/><br/>Variante 1: Com reutilização - o texto não será excluído do QListWidget após ter sido solto em um QGraphicsItem
+            </p>
+            <img/>
+
+            <p class="paragraph">Variante 2: Sem reutilização - o texto será excluído do QListWidget depois de ter sido solto em um QGraphicsItem. O texto não pode ser arrastado de volta para o QListWidget, no entanto, o texto aparecerá no QListWidget assim que o usuário selecionar um item/itens e pressionar a tecla delete.            </p>
+            <img/>
+
+            <p class="paragraph">Para alcançar a funcionalidade desejada, precisamos fazer o seguinte:
+                <br/><br/>- habilitar arrastar de QListWidget com QListWidget::setDragEnabled(true)subclasse QGraphicsItem (no nosso caso QGraphicsRectItem), habilite a eliminação com setAcceptDrops(true) e implemente o método dropEvent(QGraphicsSceneDragDropEvent *event) recuperar os dados codificados arrastados do QListWidget no formato "application/x-qabstractitemmodeldatalist" no dropEvent() do QGraphicsRectItem personalizado
+                <br/>- substituir QMainWindow::keyPressEvent(QKeyEvent *event) para permitir a remoção do texto de QGraphicsItems com a tecla delete
+                <br/><br/>As variantes diferem apenas na implementação de dropEvent(QGraphicsSceneDragDropEvent *event) no CustomRectItem derivado e em keyPressEvent(QKeyEvent *event) no MainWindow derivado.
+            </p>
+
+            <h2>Como subclassificar QGraphicsRectItem:            </h2>
+            <p class="p-code">Abaixo está o cabeçalho da subclasse QGraphicsRectItem que deve ser capaz de aceitar quedas. Como também queremos que o item aceite e exiba texto, mantemos o texto como uma variável privada, adicionamos um método de acesso e um modificador e sobrescrevemos o método paint para exibir o texto. Para realizar o arrastar e soltar real, temos que implementar o dropEvent().            </p>
+
+            <pre class="code">
+ class CustomRectItem : public QGraphicsRectItem
+{
+public:
+    CustomRectItem(QGraphicsItem * parent = 0);
+    void dropEvent(QGraphicsSceneDragDropEvent *event);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void setText(const QString& text);
+    QString text() const {return m_text;}
+private:
+    QString m_text;
+};</pre>
+
+            <p class="p-code">No customrectitem.cpp observe que no construtor do CustomRectItem habilitamos drops e tornamos o item selecionável, para que o texto possa ser removido dos itens se desejado.            </p>
+            <pre class="code">
+CustomRectItem::CustomRectItem(QGraphicsItem *parent):
+
+    QGraphicsRectItem(parent)
+{
+    setAcceptDrops(true);
+    setFlags(QGraphicsItem::ItemIsSelectable);
+}
+
+void CustomRectItem::setText(const QString &text){
+    this->m_text = text;
+    update();
+}
+
+void CustomRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+           QWidget *widget){
+    QGraphicsRectItem::paint(painter, option, widget);
+    painter->drawText(boundingRect(),m_text,
+                      QTextOption(Qt::AlignCenter));
+}</pre>
+
+<aside class="actions">
+    <a class="action" href="../components/pop-up.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+    <a class="action" href="../components/graficos.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+</aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

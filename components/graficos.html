@@ -1,0 +1,182 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/graficos.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+        </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/drag-drop.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                
+            </aside>
+
+            <h1>QGraphicsView e QGraphicsScene            </h1>
+            <p class="paragraph">Neste tutorial, aprenderemos QGraphicsView e QGraphicsScene.
+                <br/><br/>A classe QGraphicsView fornece um widget para exibir o conteúdo de um QGraphicsScene.
+                <br/><br/>QGraphicsView visualiza o conteúdo de um QGraphicsScene em uma viewport rolável. QGraphicsView faz parte do Graphics View Framework.
+                <br/><br/>A classe QGraphicsScene fornece uma superfície para gerenciar um grande número de itens gráficos 2D.
+                <br/><br/>A classe serve como um contêiner para QGraphicsItems. Ele é usado em conjunto com o QGraphicsView para visualizar itens gráficos, como linhas, retângulos, texto ou até mesmo itens personalizados, em uma superfície 2D. QGraphicsScene faz parte do Graphics View Framework.
+            </p>
+
+            <h2>Criando um exemplo</h2>
+            <p class="paragraph">Aplicativo Qt->Qt Gui:            </p>
+            <img class="print2" src="../assets/images/components/graficos/image4.png"/>
+            
+            <p class="paragraph">Precisamos colocar GraphicsView em nossa caixa de diálogo:            </p>
+            <img class="print2" src="../assets/images/components/graficos/image1.png"/>
+
+            <p class="paragraph">Se compilamos e executarmos neste ponto, obteremos:            </p>
+            <img class="print2" src="../assets/images/components/graficos/image5.png"/>
+
+            <p class="p-code">Não vemos nada além de uma visão. Esse é o GraphicsView. Criaremos uma cena e a cena será exibida com os itens que adicionaremos. Em outras palavras, a classe QGraphicsView fornece um widget para exibir o conteúdo de um QGraphicsScene.
+                <br/>Aqui está o dialog.h e o dialog.cpp modificado:
+            </p>
+
+            <p class="code-h">dialog.h</p>
+            <pre class="code-complete">
+#ifndef DIALOG_H
+#define DIALOG_H
+
+#include &lt;QDialog&gt;
+#include &lt;QGraphicsScene&gt;
+#include &lt;QGraphicsView&gt;
+#include &lt;QGraphicsItem&gt;
+
+namespace Ui {
+class Dialog;
+}
+
+class Dialog : public QDialog
+{
+    Q_OBJECT
+    
+public:
+    explicit Dialog(QWidget *parent = 0);
+    ~Dialog();
+    
+private:
+    Ui::Dialog *ui;
+
+    QGraphicsScene *scene;
+    QGraphicsEllipseItem *ellipse;
+    QGraphicsRectItem *rectangle;
+    QGraphicsTextItem *text;
+};
+#endif // DIALOG_H</pre>
+
+            <p class="code-h">dialog..cpp</p>
+            <pre class="code-complete">
+#include "dialog.h"
+#include "ui_dialog.h"
+
+Dialog::Dialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::Dialog)
+{
+    ui->setupUi(this);
+
+    scene = new QGraphicsScene(this);
+    ui->graphicsView->setScene(scene);
+
+    QBrush greenBrush(Qt::green);
+    QBrush blueBrush(Qt::blue);
+    QPen outlinePen(Qt::black);
+    outlinePen.setWidth(2);
+
+    rectangle = scene->addRect(100, 0, 80, 100, outlinePen, blueBrush);
+
+    // addEllipse(x,y,w,h,pen,brush)
+    ellipse = scene->addEllipse(0, -100, 300, 60, outlinePen, greenBrush);
+
+    text = scene->addText("bogotobogo.com", QFont("Arial", 20) );
+    // movable text
+    text->setFlag(QGraphicsItem::ItemIsMovable);
+}
+
+Dialog::~Dialog()
+{
+    delete ui;
+}</pre>
+
+            <p class="p-code">Como funciona?
+                <br/>Criamos um objeto QGraphicsScene, cena:
+            </p>
+            <p class="code">cena = new QGraphicsScene(this);            </p>
+
+            <p class="p-code">Em seguida, colocamos a cena em graphicsView:            </p>
+            <p class="code">ui->graphicsView->setScene(scene);            </p>
+
+            <p class="p-code">Itens foram adicionados à cena, por exemplo            </p>
+            <p class="code">scene->addText();</p>
+
+            <p class="paragraph">Executando o código
+                <br/>Se executarmos o código, teremos:
+            </p>
+            <img class="print2" src="../assets/images/components/graficos/image3.png"/>
+
+            <p class="p-code">Observe que o text é móvel definindo assim: </p>
+            <p class="code">text->setFlag(QGraphicsItem::ItemIsMovable);</p>
+            <img class="print3" src="../assets/images/components/graficos/image2.png"/>
+
+            <aside class="actions">
+                <a class="action" href="../components/drag-drop.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                
+            </aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

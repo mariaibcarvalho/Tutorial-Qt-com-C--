@@ -1,0 +1,140 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/tabs.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+        </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/imagem.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/listview.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Tabs</h1>
+            <p class="paragraph">Nesse tutorial iremos aprender a fazer uma tab widget (janela com abas), ela permite que vários documentos ou painéis sejam contidos em uma única janela.</p>
+            
+            <h2>Criando a tab widget</h2>
+            <p class="paragraph">Para começarmos, ao criar o seu projeto vá até a pasta “Forms” a abra o arquivo .ui, com isso a ferramenta design irá abrir. </p>
+            <img class="print1" src="../assets/images/components/Untitled.png"/> 
+            <p class="paragraph">Rolando o scroll vai até a seção de Containers, selecione Tab Widget e insira na janela.</p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-23 09-41-11.gif"/>
+
+            <h2>Nomeando as tabs e adicionando componentes</h2>
+            <p class="paragraph">Já temos nossa janela com abas, agora vamos mexer nas propriedades para deixar nossas abas mais completas! Para isso, vamos até a seção QTabWidget nas propriedades e alterar a com o nome “currentTabText”, dessa forma modificaremos o nome na aba.</p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-23 10-04-10.gif"/>
+            <p class="paragraph">Para adicionarmos conteúdo dentro das aba, role o scroll dos componentes até a seção de “Display Widgets” e insira a “Label” colocando o texto que desejar</p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-23 10-15-17 (1).gif"/>
+
+            <h2>Removendo e movendo tabs</h2>
+            <p class="paragraph">Após isso, vamos ativar essas duas propriedades da QTabWidget:</p>
+            <img class="print1" src="../assets/images/components/tabs/Untitled (3).png"/>
+            <img class="print1" src="../assets/images/components/tabs/Untitled (4).png"/>
+            <p class="paragraph">Com a “tabsClosable” poderemos fechar as tabs, agora elas têm o ícone “X” informando isso:</p>
+            <img class="print1" src="../assets/images/components/tabs/Untitled (5).png"/>
+            <p class="paragraph">Porém, apesar de clicarmos no ícone elas não fecharão ainda, para isso acontecer teremos que adicionar um método no nosso código. 
+                <br/><br/>Antes, vamos ver o resultado de ativar a propriedade “movable”. Ela permite mover as janelas e ordenar elas da forma que desejamos. Se não quiser que isso ocorra, é só desabilitar ela.
+            </p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-26 09-17-55.gif"/>
+            <p class="paragraph">Cada janela recebe o seu valor de Index, que está na propriedade “currentIndex”. Isso ordena elas e nos permite usar o método para as remover.</p>
+            <img class="print1" src="../assets/images/components/tabs/Untitled (6).png"/>
+            <img class="print0" src="../assets/images/components/tabs/2022-06-26 09-34-51.gif"/>
+            <p class="paragraph">Para adicionar o método de remover tab, aperte o botão direito, clique em “Go to slot…” e em seguida clique em “tabCloseRequested”</p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-26 10-12-08.gif"/>
+
+            <p class="p-code">O código ficará assim:</p>
+            <p class="code-h">mainwindow.cpp</p>
+            <pre class="code-complete">
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}</pre>
+
+            <p class="p-code">No método tabCloseRequested temos o parâmetro index, que vai conter o número da tab que queremos fechar. Vamos chamar o nosso componente tabWidget e a função removeTab passando o index (número da tab), assim removemos a janela.</p>
+            <pre class="code">
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}</pre>
+
+            <h2>Adicionando tab</h2>
+            <p class="paragraph">Para adicionar uma tab clique no botão direito → “insert page” → “after current page” (após a página atual) ou “before current page” (antes da página atual).</p>
+            <img class="print" src="../assets/images/components/tabs/2022-06-26 10-39-17.gif"/>
+            <p class="paragraph">Para remover essa tab sem você pode clicar no botão direito → “Page 4 of 4” (os números vão de acordo com a tab em que você está)→delete</p>
+
+            <aside class="actions">
+                <a class="action" href="../components/imagem.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/listview.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

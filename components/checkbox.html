@@ -1,0 +1,247 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/checkbox.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+        </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/label.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/combobox.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Gêneros favoritos de filme, série e/ou livro do usuário com CheckBox</h1>
+            <p class="paragraph">Para essa aplicação é necessário saber um pouco sobre CheckBox.
+                CheckBox (caixa de seleção) é um controle que torna uma instrução verdadeira ou falsa, assim é um botão que pode ser ativado ou desativado. Para realizar essa validação, esse controle exibe uma pequena caixa quadrada na qual o usuário pode clicar. No começo, a caixa quadrada está vazia *. Se o usuário clicar nele, uma marca de seleção aparecerá na caixa quadrada.
+                <br/><br/>Neste tutorial veremos como responder perguntas utilizando a caixa de seleção.
+                <br/>Na parte de design vamos utilizar seis CheckBox, um Label e um PushButton.                
+            </p>
+            <img class="print" src="../assets/images/components/checkbox/image2.png"/>
+
+            <p class="paragraph">No Label devemos digitar a pergunta “Quais gêneros de filmes, séries e/ou livros você prefere?”
+                <br/>Nos CheckBox vamos digitar: “Romance”, “Terror”, “Comédia”, “Ação”, “Suspense” e “Outros”.
+                <br/><br/>Essa mudança de texto pode ser feita dando um clique duplo sobre o elemento ou modificando na tabela de propriedades localizada no canto inferior direito (propriedades -> QLabel -> text).
+                <br/><br/>Após a modificação deve ficar assim:
+            </p>
+            <img class="print1" src="../assets/images/components/checkbox/image4-1.png"/>
+
+            <p class="paragraph">
+                Devemos adicionar função ao botão;
+                <br/>Para adicionar funcionalidade ao botão deve-se selecionar a função Clicked (que é ativada ao clicar do lado direito do mouse);
+                <br/>Depois indo até Go to slot…;
+                <br/>Selecionando Clicked e pressionando Ok.
+                <br/>Após acionarmos o Clicked do PushButton seremos direcionados ao mainwindow.cpp, local que vamos programar.
+            </p>
+            
+            <p class="p-code1">
+                Para iniciar a programação dessa aplicação vamos incluir a biblioteca QMessageBox;
+                <br/>A Classe QMessageBox é utilizada para informar o usuário ou para fazer uma pergunta ao usuário e receber uma resposta;
+                <br/>Também utilizaremos QString para exibir mensagens na execução; 
+            </p>
+            <p class="code">
+                #include "mainwindow.h"
+                <br/>#include "./ui_mainwindow.h" 
+                <br/>#include &lt;QMessageBox&gt;
+                <br/><br/>QString msg="";
+            </p>
+
+            <p class="p-code">
+                Após isso, vamos programar dentro da  void MainWindow::on_pushButton_clicked() { };
+                <br/>1° Vamos usar bool, assim o booleano irá retornar true ou false para as caixas selecionadas e nomear as seis CheckBox;
+            </p>
+
+            <pre class="code">
+void MainWindow::on_pushButton_clicked()
+{
+    bool box1, box2, box3, box4, box5, box6;
+}</pre>
+
+            <p class="p-code">2° Vamos usar as seis CheckBox com isChecked para checar se estão selecionadas;            </p>
+            <pre class="code">
+void MainWindow::on_pushButton_clicked()
+{
+    bool box1, box2, box3, box4, box5, box6;
+                
+    box1=ui->checkBox->isChecked();
+    box2=ui->checkBox_2->isChecked();
+    box3=ui->checkBox_3->isChecked();
+    box4=ui->checkBox_4->isChecked();
+    box5=ui->checkBox_5->isChecked();
+    box6=ui->checkBox_6->isChecked();
+}</pre>
+
+            <p class="p-code">3° Vamos usar if com a mensagem que deverá ser exibida ao selecionar as caixas, nesse caso o nome dos gêneros;            </p>
+            <pre class="code">
+void MainWindow::on_pushButton_clicked()
+{
+    bool box1, box2, box3, box4, box5, box6;
+                
+    box1=ui->checkBox->isChecked();
+    box2=ui->checkBox_2->isChecked();
+    box3=ui->checkBox_3->isChecked();
+    box4=ui->checkBox_4->isChecked();
+    box5=ui->checkBox_5->isChecked();
+    box6=ui->checkBox_6->isChecked();
+                
+    msg=" ";
+                
+    if(box1){
+        msg+="ROMANCE"; }
+    if(box2){
+        msg+="TERROR";}
+    if(box3){
+        msg+="COMÉDIA";}
+    if(box4){
+        msg+="AÇÃO";}
+    if(box5){
+        msg+="SUSPENSE";}
+    if(box6){
+        msg+="OUTROS";}       
+}</pre>
+
+            <p class="p-code">4° Vamos adicionar QMessageBox;            </p>
+            <pre class="code">
+void MainWindow::on_pushButton_clicked()
+ {
+    bool box1, box2, box3, box4, box5, box6;
+                
+    box1=ui->checkBox->isChecked();
+    box2=ui->checkBox_2->isChecked();
+    box3=ui->checkBox_3->isChecked();
+    box4=ui->checkBox_4->isChecked();
+    box5=ui->checkBox_5->isChecked();
+    box6=ui->checkBox_6->isChecked();
+                
+    msg="";
+                
+    if(box1){
+        msg+="ROMANCE"; }
+    if(box2){
+        msg+="TERROR";}
+    if(box3){
+        msg+="COMÉDIA";}
+    if(box4){
+        msg+="AÇÃO";}
+    if(box5){
+        msg+="SUSPENSE";}
+    if(box6){
+        msg+="OUTROS";}
+                
+    QMessageBox:: information(this, "GENEROS PREFERIDO", msg);
+}</pre>
+
+            <p class="paragraph">Ao executar o código, a tela final deverá exibir o que for selecionado.             </p>
+            <img class="print1" src="../assets/images/components/checkbox/image1-1.png"/>
+            <img class="print1" src="../assets/images/components/checkbox/image3-1.png"/>
+
+            <p class="p-code">O mainwindow.cpp completo ficará assim:         </p>
+            <pre class="code-h">mainwindow.cpp</pre>
+            <pre class="code-complete">
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
+#include &lt;Q MessageBox&gt;
+
+QString msg="";
+
+MainWindow::MainWindow(QWidget *parent)
+   : QMainWindow(parent)
+   , ui(new Ui::MainWindow)
+{
+   ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+   delete ui;
+}
+void MainWindow::on_pushButton_clicked()
+{
+   bool box1, box2, box3, box4, box5, box6;
+
+   box1=ui->checkBox->isChecked();
+   box2=ui->checkBox_2->isChecked();
+   box3=ui->checkBox_3->isChecked();
+   box4=ui->checkBox_4->isChecked();
+   box5=ui->checkBox_5->isChecked();
+   box6=ui->checkBox_6->isChecked();
+
+   msg="";
+
+   if(box1){
+       msg+="ROMANCE"; }
+   if(box2){
+       msg+="TERROR";}
+   if(box3){
+       msg+="COMÉDIA";}
+   if(box4){
+       msg+="AÇÃO";}
+   if(box5){
+       msg+="SUSPENSE";}
+   if(box6){
+       msg+="OUTROS";} generos 
+
+   QMessageBox:: information(this, "GENEROS PREFERIDO", msg);
+}</pre>
+
+<aside class="actions">
+    <a class="action" href="../components/label.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+    <a class="action" href="../components/combobox.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+</aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

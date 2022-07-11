@@ -1,0 +1,223 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Progresso</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/progressbar.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+      <nav class="category">
+        <h3 class="menu-item-title">
+            Introdução
+        </h3>
+        <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+        <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+        <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+        <hr>
+        <h3 class="menu-item-title">Componentes</h3>
+        <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+        <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+        <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+        <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+        <a class="menu-item-element" href="../components/slider.html">Slider</a>
+        <a class="menu-item-element" href="../components/spin.html">Spin</a>
+        <a class="menu-item-element" href="#">Toggle</a>
+        <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+        <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+        <a class="menu-item-element" href="../components/listview.html">List View</a>
+        <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+        <a class="menu-item-element" href="#">Picker</a>
+        <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+        <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+        <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+        <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+        <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+        <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+    </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/listview.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/menu-separador.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Barra de Progresso</h1>
+            <p class="p-code">Nesse tutorial veremos como fazer uma barra de progresso (em inglês *progress bar),* ela é utilizada para indicar o progresso de uma operação. 
+                <br/><br/>Para começarmos o tutorial, temos o aquivo header, cpp e o main:</p>
+                
+            <p class="code-h">progressbar.h</p>
+            <pre class="code-complete">
+#pragma once
+
+#include &lt;QWidget&gt;
+#include &lt;QProgressBar&gt;
+#include &lt;QPushButton&gt;
+
+class ProgressBarEx : public QWidget {
+
+  Q_OBJECT
+
+  public:
+    ProgressBarEx(QWidget *parent = 0);
+
+  private:
+    int progress;
+    QTimer *timer;
+    QProgressBar *pbar;
+    QPushButton *startBtn;
+    QPushButton *stopBtn;
+    static const int DELAY = 200;
+    static const int MAX_VALUE = 100;
+
+    void updateBar();
+    void startMyTimer();
+    void stopMyTimer();
+};</pre>
+
+            <p class="code-h">progressbar.cpp</p>
+            <pre class="code-complete">
+#include &lt;QProgressBar&gt;
+#include &lt;QTimer&gt;
+#include &lt;QGridLayout&gt;
+#include "progressbar.h"
+
+ProgressBarEx::ProgressBarEx(QWidget *parent)
+    : QWidget(parent) {
+
+  progress = 0;
+  timer = new QTimer(this);
+  connect(timer, &QTimer::timeout, this, &ProgressBarEx::updateBar);
+
+  QGridLayout *grid = new QGridLayout(this);
+  grid->setColumnStretch(2, 1);
+
+  pbar = new QProgressBar();
+  grid->addWidget(pbar, 0, 0, 1, 3);
+
+  startBtn = new QPushButton("Start", this);
+  connect(startBtn, &QPushButton::clicked, this, &ProgressBarEx::startMyTimer);
+  grid->addWidget(startBtn, 1, 0, 1, 1);
+
+  stopBtn = new QPushButton("Stop", this);
+  connect(stopBtn, &QPushButton::clicked, this, &ProgressBarEx::stopMyTimer);
+  grid->addWidget(stopBtn, 1, 1);
+}
+
+void ProgressBarEx::startMyTimer() {
+
+  if (progress >= MAX_VALUE) {
+
+      progress = 0;
+      pbar->setValue(0);
+  }
+
+  if (!timer->isActive()) {
+
+    startBtn->setEnabled(false);
+    stopBtn->setEnabled(true);
+    timer->start(DELAY);
+  }
+}
+
+void ProgressBarEx::stopMyTimer() {
+
+  if (timer->isActive()) {
+
+    startBtn->setEnabled(true);
+    stopBtn->setEnabled(false);
+    timer->stop();
+  }
+}
+
+void ProgressBarEx::updateBar() {
+
+  progress++;
+
+  if (progress <= MAX_VALUE) {
+
+    pbar->setValue(progress);
+  } else {
+
+    timer->stop();
+    startBtn->setEnabled(true);
+    stopBtn->setEnabled(false);
+  }
+}</pre>
+
+            <p class="code-h">main.cpp</p>
+            <pre class="code-complete">
+#include &lt;QApplication&gt;
+#include "progressbar.h"
+
+int main(int argc, char *argv[]) {
+  QApplication app(argc, argv);
+  janela ProgressBarEx;
+  window.resize(250, 150);
+  window.setWindowTitle("QProgressBar");
+  janela.show();
+  return app.exec();
+}</pre>
+
+            <p class="p-code">Nesse exemplo, temos uma QProgressBar e dois botões de pressionar (push button). Um deles inicia o cronômetro, que consequentemente atualiza a barra de progresso, enquanto o outro interrompe o cronômetro. Como pode ser visto nesse trecho do código, onde o Qtimer é utilizado para controlar a janela da QProgressBar:</p>
+            <p class="code">timer = new QTimer(this);
+                connect(timer, &QTimer::timeout, this, &ProgressBarEx::updateBar);</p>
+            
+            <p class="p-code">Criamos uma instância de QProgressBar, onde os valores padrões minimos e máximos são definidos como 0 e 100:</p>
+            <p class="code">pbar = new QProgressBar();</p>
+            
+            <p class="p-code">Dependendo do estado da barra de progresso, os botões são ativados ou desativados. Isso é feito utilizando o método setEnable, dessa forma:</p>
+            <pre class="code">
+if (!timer->isActive()) {
+  startBtn->setEnabled(false);
+  stopBtn->setEnabled(true);
+  temporizador->início(ATRASO);
+}</pre>
+
+            <p class="p-code">O progresso é guardado na variavel “int progress”. O setValue atualiza o valor atual da barra de progresso:</p>
+            <pre class="code">
+void ProgressBarEx::updateBar() {
+
+  progress++;
+
+  if (progress <= MAX_VALUE) {
+
+    pbar->setValue(progress);
+  } else {
+
+    timer->stop();
+    startBtn->setEnabled(true);
+    stopBtn->setEnabled(false);
+  }
+}</pre>
+
+<aside class="actions">
+  <a class="action" href="../components/listview.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+  <a class="action" href="../components/menu-separador.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+</aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

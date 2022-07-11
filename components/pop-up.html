@@ -1,0 +1,192 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janela de Diálogo</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/pop-up.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+        </nav>
+       
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/Tabela.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/drag-drop.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Janela de Diálogo - Pop-up</h1>
+            <p class="paragraph">Pop up: O pop-up é um tipo de janela que se abre no navegador ao visitar uma página web ou acessar uma hiperligação específica. O pop-up é utilizado por autores de sites para abrir alguma informação extra ou como meio de propaganda.            </p>
+
+            <h2>Tipo de QML pop-up</h2>
+            <p class="paragraph">Tipo básico de controles de interface de usuário semelhantes a pop-up.
+                <br/>Lista de todos os membros, incluindo membros herdados
+            </p>
+            <img class="print" src="../assets/images/components/pop-up/image2.png"/>
+
+            <p class="paragraph"><strong>Propriedades</strong></p>
+            <img class="print" src="../assets/images/components/pop-up/image5.png"/>
+
+            <p class="paragraph"><strong>Funções Públicas</strong></p>
+            <img class="print2" src="../assets/images/components/pop-up/image4.png"/>
+
+            <h2>Descrição detalhada</h2>
+            <p class="paragraph">Um QTableView implementa uma visualização de tabela que exibe itens de um modelo. Esta classe é usada para fornecer tabelas padrão que foram fornecidas anteriormente pela classe QTable, mas usando a abordagem mais flexível fornecida pela arquitetura model/view do Qt.
+                <br/>A classe QTableView é uma das classes Model/View e faz parte do framework model/view do Qt .
+                <br/>QTableView implementa as interfaces definidas pela classe QAbstractItemView para permitir a exibição de dados fornecidos por modelos derivados da classe QAbstractItemModel.
+            </p>
+            <img class="print2" src="../assets/images/components/pop-up/image6.png"/>
+
+            <h2>Navegação</h2>
+            <p class="paragraph">Você pode navegar pelas células da tabela clicando em uma célula com o mouse ou usando as teclas de seta. Como o QTableView habilita tabKeyNavigation por padrão, você também pode pressionar Tab e Backtab para mover de célula para célula.   </p>
+
+            <h2>Aparência Visual</h2>
+            <p class="paragraph">
+                A tabela tem um cabeçalho vertical que pode ser obtido usando a função verticalHeader() e um cabeçalho horizontal que está disponível através da função horizontalHeader(). A altura de cada linha na tabela pode ser encontrada usando rowHeight(); da mesma forma, a largura das colunas pode ser encontrada usando columnWidth(). Como ambos são widgets simples, você pode ocultar qualquer um deles usando suas funções hide(). Cada cabeçalho é configurado com suas propriedades highlightSections e sectionClickable definidas como true.
+                <br/><br/>Linhas e colunas podem ser ocultadas e mostradas com hideRow(), hideColumn(), showRow() e showColumn(). Eles podem ser selecionados com selectRow() e selectColumn(). A tabela mostrará uma grade dependendo da propriedade showGrid.
+                <br/><br/>Os itens mostrados em um modo de exibição de tabela, como os de outros modos de exibição de item, são renderizados e editados usando delegados padrão . No entanto, para algumas tarefas, às vezes é útil poder inserir widgets em uma tabela. Widgets são definidos para índices específicos com a função setIndexWidget() e posteriormente recuperados com indexWidget().
+            </p>
+            <img class="print3" src="../assets/images/components/pop-up/image3.png"/>
+
+            <h2>Pop-up Layout</h2>
+            <p class="p-code">
+                O implicitWidth e o implicitHeight de um pop-up geralmente são baseados nos tamanhos implícitos do plano de fundo e do item de conteúdo, além de quaisquer inserções e preenchimentos. Essas propriedades determinam o tamanho do pop-up quando nenhuma largura ou altura explícita for especificada.
+                <br/><br/>A geometria do contentItem é determinada pelo preenchimento. O exemplo a seguir reserva um preenchimento de 10px entre os limites do pop-up e seu conteúdo:
+            </p>
+            <pre class="code">
+Popup {
+    topInset: -2
+    leftInset: -2
+    rightInset: -6
+    bottomInset: -6
+
+    background: BorderImage {
+        source: ":/images/shadowed-background.png"
+}</pre>
+
+            <p class="p-code">
+                Em primeiro lugar, gostaria de recomendar o exemplo de sinalizadores do Windows dos documentos do Qt. Ele fornece uma boa amostra para brincar com este tópico. Neste exemplo, um QWidget é derivado para mostrar o efeito dos sinalizadores distintos. Isso me levou à ideia de que provavelmente qualquer QWidget pode ser usado para isso se o Qt::WindowFlags apropriado estiver definido. 
+                <br/><br/>Eu escolhi QLabel porque
+                <br/>- Ele pode exibir texto
+                <br/>- Ele herda do QFrame e, portanto, pode ter um quadro.
+                <br/><br/>Código da mainwindow.cpp:
+            </p>
+
+            <p class="code-h">mainwindow.cpp</p>
+            <pre class="code-complete">
+#include &lt;QApplication&gt;
+#include &lt;QLabel&gt;
+#include &lt;QMainWindow&gt;
+#include &lt;QTimer&gt;
+
+using namespace std;
+
+int main(int argc, char **argv)
+{
+  cout << QT_VERSION_STR << endl;
+
+  // main application
+#undef qApp // undef macro qApp out of the way
+  QApplication qApp(argc, argv);
+
+  // setup GUI
+  QMainWindow qWin;
+  qWin.setFixedSize(640, 400);
+  qWin.show();
+
+  // setup popup
+  QLabel qPopup(QString::fromLatin1("Some text"),
+    &qWin,
+    Qt::SplashScreen | Qt::WindowStaysOnTopHint);
+
+  QPalette qPalette = qPopup.palette();
+  qPalette.setBrush(QPalette::Background, QColor(0xff, 0xe0, 0xc0));
+
+  qPopup.setPalette(qPalette);
+  qPopup.setFrameStyle(QLabel::Raised | QLabel::Panel);
+  qPopup.setAlignment(Qt::AlignCenter);
+  qPopup.setFixedSize(320, 200);
+  qPopup.show();
+
+  // setup timer
+  QTimer::singleShot(1000,
+    [&qPopup]() {
+    qPopup.setText(QString::fromLatin1("Closing in 3 s"));
+  });
+
+  QTimer::singleShot(2000,
+    [&qPopup]() {
+    qPopup.setText(QString::fromLatin1("Closing in 2 s"));
+  });
+
+  QTimer::singleShot(3000,
+    [&qPopup]() {
+    qPopup.setText(QString::fromLatin1("Closing in 1 s"));
+  });
+
+  QTimer::singleShot(4000, &qPopup, &QLabel::hide);
+
+  // run application
+  return qApp.exec();
+}</pre>
+
+            <img class="print" src="../assets/images/components/pop-up/image1.png"/>
+
+            <aside class="actions">
+                <a class="action" href="../components/Tabela.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/drag-drop.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

@@ -3,13 +3,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download no Linux</title>
+    <title>Spin</title>
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/navigation/header.css">
     <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
     <link rel="stylesheet" href="../css/navigation/action.css">
-    <link rel="stylesheet" href="../css/introdução/conceito.css">
+    <link rel="stylesheet" href="../css/components/spin.css">
     <link rel="stylesheet" href="../css/content/text.css">
     <link rel="stylesheet" href="../css/foooter.css">
 </head>
@@ -56,44 +56,87 @@
      <main class="content">
         <article>
             <aside class="actions">
-                <a class="action" href="../introduction/windows.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
-                <a class="action" href="../components/label.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+                <a class="action" href="../components/slider.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/imagem.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
             </aside>
-            <h1>Download doQt no Linux versão 6</h1>
-            <p class="paragraph">Se quer começar a desenvolver usando Qt e necessita de uma IDE leve que torna o desenvolvimento mais rápido e fácil, o Qt Creator é perfeito para isso. 
-                Caso seja usuário de Linux e queira começar com a nova versão do Qt Creator, esse tutorial é da versão 6.2, é apenas seguir seus passos.   </p>
 
-            <h2>Instalação dos Pré-Requisitos</h2>
-            <p class="p-code">Primeiramente, você deve instalar os pré-requisitos usando o apt gerenciador de pacotes, para isso abra um terminal (você pode utilizar as teclas de atalho CTR + ALT + T).
-                <br/><br/>1º Rode esse comando para garantir que o seu gerenciador de pacotes esteja atualizado:
-            </p>
-            <p class="code">sudo apt-get update && sudo apt-get upgrade</p>
-            <p class="p-code">2º Instale as ferramentas e bibliotecas necessárias para o Qt (copie e cole a linha inteira, ela é longa):</p>
-            <p class="code">sudo apt-get -y install build-essential openssl libssl-dev libssl1.0 libgl1-mesa-dev libqt5x11extras5
-            </p>
-            <p class="paragraph"></p>
-            <h2>Download do Instalador do Qt</h2>
-            <p class="paragraph">Agora vamos instalar o Qt, vá até <a href="https://www.qt.io/download-qt-installer" target="_blank">downloads</a> no site oficial. O próprio site identifica que você está executando o Linux, cheque se a recomendação dele é <strong>Qt Online Installer for Linux</strong> e em seguida clique no botão verde de Download que automaticamente ele irá começar.
-            </p>
+            <h1>Spin</h1>
 
-            <h2>Executando o Instalador do Qt</h2>
-            <p class="p-code">Após baixar, ele provavelmente estará no seu diretório ~/Downloads e está nomeado parecido com qt-unified-linux-x64-versão-online.run. Porém, ainda é preciso torná-lo executável, para isso faça:
+            <p class="paragraph">Nesse tutorial iremos aprender a como fazer uma spin box. Iremos utilizar o QSpinBox, um widget feito para manipula inteiros e conjuntos discretos de valores. 
+                <br/><br/>Para começarmos o tutorial, temos o arquivo header, cpp e o main:
             </p>
-
-            <p class="p-code">1º Acesse o seu diretório com o comando:</p>
-            <p class="code">cd Downloads/</p>
             
-            <p class="p-code">2º Em seguida use este comando para tornar o arquivo executável:</p>
-            <p class="code">chmod +x qt* .run</p>
+            <p class="code-h">spinbox.h</p>
+            <pre class="code-complete">
+#pragma once
+#include &lt;QWidget&gt;
+#include &lt;QSpinBox&gt;
 
-            <p class="p-code">3º Após isso você já pode executar o Qt usando o comando:</p>
-            <p class="code">./qt* .run</p>
+class SpinBox : public QWidget {
 
-            <p class="paragraph">E então o instalador do Qt irá te guiar por um conjunto de etapas, que em sua maioria você pode apenas clicar em “next” (avançar) ou em “agree” (concordo) para seguir adiante. Com exceção da etapa “Welcome” que pede para fazer o login em sua conta do Qt (caso não tenha será necessário criar uma) e da etapa “Installation Folder” que é recomendável escolher a opção “Qt 6.x for desktop development Qt libraries for GCC” e não mudar o nome ou o local do diretório em que o Qt será instalado.            </p>
+  Q_OBJECT
+
+  public:
+    SpinBox(QWidget *parent = nullptr);
+
+  private:
+    QSpinBox *spinbox;
+};</pre>
+
+            <p class="code-h">spinbox.cpp</p>
+            <pre class="code-complete">
+#include &lt;QHBoxLayout&gt;
+#include &lt;QLabel&gt;
+#include "spinbox.h"
+
+SpinBox::SpinBox(QWidget *parent)
+    : QWidget(parent) {
+
+  auto *hbox = new QHBoxLayout(this);
+  hbox->setSpacing(15);
+
+  spinbox = new QSpinBox(this);
+  auto *lbl = new QLabel("0", this);
+
+  hbox->addWidget(spinbox);
+  hbox->addWidget(lbl);
+
+  connect(spinbox, qOverload<int>(&QSpinBox::valueChanged),
+    lbl, qOverload<int>(&QLabel::setNum));
+}</pre>
+
+            <p class="code-h">main.cpp</p>
+            <pre class="code">
+#include &lt;QApplication&gt;
+#include "spinbox.h"
+
+int main(int argc, char *argv[]) {
+
+  QApplication app(argc, argv);
+
+  SpinBox window;
+
+  window.resize(250, 150);
+  window.setWindowTitle("QSpinBox");
+  window.show();
+
+  return app.exec();
+}</pre>
+
+            <p class="p-code">
+                Colocamos uma spinbox na janela e conectamos seu signal valueChanged (modificando o valor) ao slot setNum (modificando o número) da QLabel. Precisamos usar o qOverload duas vezes porque tanto o signal quanto o slot estão sobrecarregados. Esse é o trecho do código que faz a mágica:
+            </p>
+            <pre class="code">
+  connect(spinbox, qOverload<int>(&QSpinBox::valueChanged),
+    lbl, qOverload<int>(&QLabel::setNum));</pre>
+
+            <p class="paragraph">Então temos o resultado:</p>
+            <img class="print2" src="../assets/images/components/spin/Untitled (1).png"/>
+            <img class="print1" src="../assets/images/components/spin/2022-06-26 12-18-02 (1).gif"/>
 
             <aside class="actions">
-                <a class="action" href="../index.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Home</a>
-                <a class="action" href="../introduction/windows.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+                <a class="action" href="../components/slider.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/imagem.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
             </aside>
         </article>
      </main>

@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+article {
+
+    padding: 0% 4%;
+
+    width: 100%;
+}
+
+.print{
+    margin-top: -2%;
+    width: 84%;
+}
+
+.print1{
+    margin-top: -2%;
+    width: 24%;
+}
+
+.print2{
+    margin-top: -2%;
+    width: 34%;
+}

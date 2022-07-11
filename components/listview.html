@@ -1,0 +1,293 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List View</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/listview.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+      <nav class="category">
+        <h3 class="menu-item-title">
+            Introdução
+        </h3>
+        <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+        <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+        <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+        <hr>
+        <h3 class="menu-item-title">Componentes</h3>
+        <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+        <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+        <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+        <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+        <a class="menu-item-element" href="../components/slider.html">Slider</a>
+        <a class="menu-item-element" href="../components/spin.html">Spin</a>
+        <a class="menu-item-element" href="#">Toggle</a>
+        <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+        <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+        <a class="menu-item-element" href="../components/listview.html">List View</a>
+        <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+        <a class="menu-item-element" href="#">Picker</a>
+        <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+        <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+        <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+        <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
+        <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
+        <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+    </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/tabs.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/progressbar.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>List View</h1>
+            <p class="p-code">O QListWidget é um widget utilizado para exibir uma lista de itens. Nesse tutorial iremos aprender como adicionar, renomear e remover itens do widget de lista.
+            <br/><br/>Para começarmos o tutorial, temos o aquivo header, cpp e o main:</p>
+            
+            <p class="code-h">listwidget.h</p>
+            <pre class="code-complete">
+#pragma once
+
+#include &lt;QWidget&gt;
+#include &lt;QPushButton&gt;
+#include &lt;QListWidget&gt;
+
+class ListWidget : public QWidget {
+    
+  Q_OBJECT
+
+  public:
+    ListWidget(QWidget *parent = 0);
+
+  private slots:
+    void addItem();
+    void renameItem();
+    void removeItem();
+    void clearItems();
+
+  private:
+    QListWidget *lw;
+    QPushButton *add;
+    QPushButton *rename;
+    QPushButton *remove;
+    QPushButton *removeAll; 
+};</pre>
+
+
+            <p class="code-h">listwidget.cpp</p>
+            <pre class="code-complete">
+#include "listwidget.h"
+#include &lt;QVBoxLayout&gt;
+#include &lt;QInputDialog&gt;
+
+ListWidget::ListWidget(QWidget *parent)
+    : QWidget(parent) {
+
+  QVBoxLayout *vbox = new QVBoxLayout();
+  vbox->setSpacing(10);
+
+  QHBoxLayout *hbox = new QHBoxLayout(this);
+
+  lw = new QListWidget(this);
+  lw->addItem("O Auto da Compadecida");
+  lw->addItem("Cidade de Deus");
+  lw->addItem("Tropa de Elite");
+  lw->addItem("Hoje Eu Quero Voltar Sozinho");
+  lw->addItem("Minha Mãe é uma Peça");
+
+  add = new QPushButton("Adicionar", this);
+  rename = new QPushButton("Renomear", this);
+  remove = new QPushButton("Remover", this);
+  removeAll = new QPushButton("Remover Todos", this);
+
+  vbox->setSpacing(3);
+  vbox->addStretch(1);
+  vbox->addWidget(add);
+  vbox->addWidget(rename);
+  vbox->addWidget(remove);
+  vbox->addWidget(removeAll);
+  vbox->addStretch(1);
+
+  hbox->addWidget(lw);
+  hbox->addSpacing(15);
+  hbox->addLayout(vbox);
+
+  connect(add, &QPushButton::clicked, this, &ListWidget::addItem);
+  connect(rename, &QPushButton::clicked, this, &ListWidget::renameItem);
+  connect(remove, &QPushButton::clicked, this, &ListWidget::removeItem);
+  connect(removeAll, &QPushButton::clicked, this, &ListWidget::clearItems);
+
+  setLayout(hbox);
+}
+
+void ListWidget::addItem() {
+
+  QString c_text = QInputDialog::getText(this, "Item", "Adicione um novo item");
+  QString s_text = c_text.simplified();
+
+  if (!s_text.isEmpty()) {
+
+    lw->addItem(s_text);
+    int r = lw->count() - 1;
+    lw->setCurrentRow(r);
+  }
+}
+
+void ListWidget::renameItem() {
+
+  QListWidgetItem *curitem = lw->currentItem();
+
+  int r = lw->row(curitem);
+  QString c_text = curitem->text();
+  QString r_text = QInputDialog::getText(this, "Item",
+      "Insira o novo nome", QLineEdit::Normal, c_text);
+
+  QString s_text = r_text.simplified();
+
+  if (!s_text.isEmpty()) {
+
+    QListWidgetItem *item = lw->takeItem(r);
+    delete item;
+    lw->insertItem(r, s_text);
+    lw->setCurrentRow(r);
+  }
+}
+
+void ListWidget::removeItem() {
+
+  int r = lw->currentRow();
+
+  if (r != -1) {
+
+    QListWidgetItem *item = lw->takeItem(r);
+    delete item;
+  }
+}
+
+void ListWidget::clearItems(){
+
+  if (lw->count() != 0) {
+    lw->clear();
+  }
+}</pre>
+
+            <p class="code-h">main.cpp</p>
+            <pre class="code-complete">
+#include &lt;QApplication&gt;
+#include "listwidget.h"
+
+int main(int argc, char *argv[]) {
+
+  QApplication app(argc, argv);
+
+  ListWidget window;
+
+  window.setWindowTitle("QListWidget");
+  window.show();
+
+  return app.exec();
+}</pre>
+
+            <h2>Criando a lista e preenchendo</h2>
+            <p class="p-code">Exibimos um widget de lista e quatro botões. Usamos os botões para adicionar, renomear e remover itens da lista. O QListWidget é criado e preenchido com cinco itens:</p>
+            <pre class="code">
+lw = new QListWidget(this);
+  lw->addItem("O Auto da Compadecida");
+  lw->addItem("Cidade de Deus");
+  lw->addItem("Tropa de Elite");
+  lw->addItem("Hoje Eu Quero Voltar Sozinho");
+  lw->addItem("Minha Mãe é uma Peça");</pre>
+
+            <h2>Adicionando novos itens</h2>
+            <p class="p-code">O método addItem adiciona um novo item a lista. O método abre uma caixa de diálogo de entrada, que retorna uma string. Removemos possíveis espaços em branco da string usando o método “simplified”. Se a string retornada não estiver vazia, nós a adicionamos no final da lista. Por fim, destacamos o item inserido com o método “setCurrentRow”:</p>
+            <pre class="code">
+void ListWidget::addItem() {
+    
+  QString c_text = QInputDialog::getText(this, "Item", "Adicione um novo item"");
+  QString s_text = c_text.simplified();
+  
+  if (!s_text.isEmpty()) {
+      
+    lw->addItem(s_text);
+    int r = lw->count() - 1;
+    lw->setCurrentRow(r);
+  }
+}</pre>
+
+            <h2>Renomeando os itens</h2>
+            <p class="p-code">Renomear um item consiste em várias etapas. Primeiro, obtemos o item atual (o selecionado) usando o método “currentItem”, então pegamos o texto dele e a linha onde está localizado. O texto do item é exibido na caixa de diálogo QInputDialog. A string que é retornada pela caixa de diálogo é processada pelo método “simplified” para remover possiveis espaços em branco. Em seguida, removemos o item antigo com o método “takeItem” e o substituimos pelo método “insertItem”. Excluímos  item removido pelo método takeItem, pois os itens removidos não são mais gerenciados pelo Qt. Finalmente, o setCurrentRow seleciona o novo item:</p>
+            <pre class="code">
+void ListWidget::renameItem() { 
+    
+  QListWidgetItem *curitem = lw->currentItem(); 
+  
+  int r = lw->row(curitem); 
+  QString c_text = curitem->text(); 
+  QString r_text = QInputDialog::getText(this, "Item", 
+      "Digite novo item", QLineEdit::Normal, c_text); 
+  
+  QString s_text = r_text.simplified(); 
+  
+  if (!s_text.isEmpty()) { 
+      
+    QListWidgetItem *item = lw->takeItem(r); 
+    apagar item; 
+    lw->insertItem(r, s_texto); 
+    lw->setCurrentRow(r); 
+  } 
+}</pre>
+
+            <h2>Removendo itens</h2>
+            <p class="p-code">A função removeItem remove um item específico da lista. Primeiro, ele pega o item selecionado com o método “currentRow” (ele retorna -1 se não houver mais listas restantes). O item selecionado é removido usando o método “takeItem”:</p>
+            <pre class="code">
+void ListWidget::removeItem() { 
+    
+  int r = lw->currentRow(); 
+
+  if (r != -1) { 
+      
+    QListWidgetItem *item = lw->takeItem(r); 
+    apagar item; 
+  } 
+}</pre>
+            <p class="p-code">Já a função clearItems, remove todos os itens da lista:</p>
+            <pre class="code">
+void ListWidget::clearItems(){
+    
+  if (lw->count() != 0) {
+    lw->clear();
+  }
+}</pre>
+
+<aside class="actions">
+  <a class="action" href="../components/tabs.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+  <a class="action" href="../components/progressbar.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+</aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>

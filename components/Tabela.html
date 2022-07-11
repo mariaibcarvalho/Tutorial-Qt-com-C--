@@ -1,0 +1,148 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/navigation/header.css">
+    <link rel="stylesheet" href="../css/navigation/navigation-rail.css">
+    <link rel="stylesheet" href="../css/navigation/action.css">
+    <link rel="stylesheet" href="../css/components/Tabela.css">
+    <link rel="stylesheet" href="../css/content/text.css">
+    <link rel="stylesheet" href="../css/foooter.css">
+</head>
+<body>
+    <section class="menu">
+        <nav class="category">
+            <h3 class="menu-item-title">
+                Introdução
+            </h3>
+            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
+            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
+            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
+            <hr>
+            <h3 class="menu-item-title">Componentes</h3>
+            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
+            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
+            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
+            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
+            <a class="menu-item-element" href="../components/slider.html">Slider</a>
+            <a class="menu-item-element" href="../components/spin.html">Spin</a>
+            <a class="menu-item-element" href="#">Toggle</a>
+            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
+            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
+            <a class="menu-item-element" href="../components/listview.html">List View</a>
+            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
+            <a class="menu-item-element" href="#">Picker</a>
+            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
+            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
+            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
+            <a class="menu-item-element" href="#">Janela de diálogo</a>
+            <a class="menu-item-element" href="#">Drag and Drop</a>
+            <a class="menu-item-element" href="#">Gráficos</a>
+        </nav>
+    </section>
+     <header class="header-navigation-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <nav class="header-navigation">
+            <a class="header-navigation-item" href="../index.html">Home</a>
+            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
+            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
+            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
+        </nav>
+     </header>
+     <main class="content">
+        <article>
+            <aside class="actions">
+                <a class="action" href="../components/scroll.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/pop-up.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+
+            <h1>Tabela</h1>
+            
+            <p class="paragraph">Iremos utilizar o QListView para criar nossa tabela. Já que quando estiver lidando com dados mais complexos e multi-colunas, o widget QListView é mais adequado que o QListBox. O QListView pode ser exibir dados multi-colunas armazenado como uma lista ou uma estrutura em árvore. Cada coluna pode ter um cabeçalho que permite ordenar a lista pelo clique sobre ela. A figura abaixo mostra um exemplo da aplicação.            </p>
+            <img class="print2" src="../assets/images/components/tabela/image4.png"/>
+
+            <p class="p-code">O widget listview é bastante complexo, por isso o exemplo é dividido em quatro partes, cada uma mostra uma aba diferente da aplicação exemplo. Nós começamos com o caso mais básico – uma lista simples com várias colunas. Isso é mostrado na aba com o título “List” mostrada na figura 13-3. O código que cria a listview é mostrado no exemplo abaixo:            </p>
+            <pre class="code">
+QWidget *ListViewExample::setupListTab()
+{
+    m_listView = new QListView();
+    m_listView->addColumn( "Foo" );
+    m_listView->addColumn( "Bar" );
+    m_listView->addColumn( "Baz" );
+    m_listView->setAllColumnsShowFocus( true );
+    new QListViewItem( m_listView, "(1, 1)", "(1, 2)", "(1, 3)" );
+    new QListViewItem( m_listView, "(2, 1)", "(2, 2)", "(2, 3)" );
+    new QListViewItem( m_listView, "(3, 1)", "(3, 2)", "(3, 3)" );
+    new QListViewItem( m_listView, "(4, 1)", "(4, 2)", "(4, 3)" );
+
+    return m_listView;
+}</pre>
+
+            <p class="paragraph">O código mostra os passos básicos necessários para usar a listview. Primeiro, algumas colunas são criadas. Depois, qualquer configuração especial é feita. Nesse caso, nos certificamos que a seleção é mostrada sobre toda a linha, e não sobre a primeira coluna somente. Finalmente, preenchemos a lista pela criação de um conjunto de QListBiewItems que referencem-se a listview como parent.            </p>
+            <img class="print2" src="../assets/images/components/tabela/image1.png"/>
+            <p class="p-code">O widget listview é bastante complexo, por isso o exemplo é dividido em quatro partes, cada uma mostra uma aba diferente da aplicação exemplo. Nós começamos com o caso mais básico – uma lista simples com várias colunas. Isso é mostrado na aba com o título “List” mostrada na figura 13-3. O código que cria a listview é mostrado no exemplo abaixo:            </p>
+            <pre class="code">
+QWidget *ListViewExample::setupListTab()
+{
+    m_listView = new QListView();
+    m_listView->addColumn( "Foo" );
+    m_listView->addColumn( "Bar" );
+    m_listView->addColumn( "Baz" );
+    m_listView->setAllColumnsShowFocus( true );
+
+    new QListViewItem( m_listView, "(1, 1)", "(1, 2)", "(1, 3)" );
+    new QListViewItem( m_listView, "(2, 1)", "(2, 2)", "(2, 3)" );
+    new QListViewItem( m_listView, "(3, 1)", "(3, 2)", "(3, 3)" );
+    new QListViewItem( m_listView, "(4, 1)", "(4, 2)", "(4, 3)" );
+
+    return m_listView;
+}</pre>
+
+            <p class="p-code">O segundo caso de uso é exibir os itens da listview em uma hierarquia de árvore. Isso é mostrado na aba com o titulo “Tree”. O código que cria a listview é mostrado no exemplo abaixo. Quando executar a aplicação exemplo, experimente clicar nos cabeçalhos da coluna para ordenar os itens. Observe que cada seção (A, B ou C) é ordenada separadamente.</p>
+        <pre class="code">
+QWidget *ListViewExample::setupTreeTab()
+{
+    m_treeView = new QListView();
+    m_treeView->addColumn( "Tree" );
+    m_treeView->addColumn( "First" );
+    m_treeView->addColumn( "Second" );
+    m_treeView->addColumn( "Third" );
+    m_treeView->setRootIsDecorated( true );
+
+    QListViewItem *root = new QListViewItem( m_treeView, "root" );
+    QListViewItem *a = new QListViewItem( root, "A" );
+    QListViewItem *b = new QListViewItem( root, "B" );
+    QListViewItem *c = new QListViewItem( root, "C" );
+
+    new QListViewItem( a, "foo", "1", "2", "3" );
+    new QListViewItem( a, "bar", "i", "ii", "iii" );
+    new QListViewItem( a, "baz", "a", "b", "c" );
+    new QListViewItem( b, "foo", "1", "2", "3" );
+    new QListViewItem( b, "bar", "i", "ii", "iii" );
+    new QListViewItem( b, "baz", "a", "b", "c" );
+    new QListViewItem( c, "foo", "1", "2", "3" );
+    new QListViewItem( c, "bar", "i", "ii", "iii" );
+    new QListViewItem( c, "baz", "a", "b", "c" );
+
+    return m_treeView;
+}</pre>
+
+            <p class="paragraph">O código é estruturado da mesma forma que a lista básica. A diferença é que ao invés de usar um widget listview como parent para os itens, alguns itens possuem  outros itens como parent. As razões para usar esse tipo de organização é fornecer um feedback para o usuário. Somente ver o item raiz não diz ao usuário que existem mais itens. O sinal de mais a direita do texto diz isso ao usuário.</p>
+            <img class="print2" src="../assets/images/components/tabela/image2.png"/>
+
+            <aside class="actions">
+                <a class="action" href="../components/scroll.html"><img class="action-icon" src="../assets/icons/arrow-left.png" /> Anterior</a>
+                <a class="action" href="../components/pop-up.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
+            </aside>
+        </article>
+     </main>
+     <footer class="footer-with-shadow">
+        <img src="../assets/images/PI-logo.png" />
+        <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="../assets/images/github.png"/> </a>
+    </footer>
+</body>
+</html>
