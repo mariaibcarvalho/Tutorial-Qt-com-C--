@@ -12,18 +12,25 @@
     <link rel="stylesheet" href="css/navigation/header.css">
     <link rel="stylesheet" href="css/index/index.css">
     <link rel="stylesheet" href="css/foooter.css">
-
+    
+    
     <title>Tutorial Qt com C++</title>
 
 </head>
 <body>
    <header>
-      <img src="assets/images/PI-logo.png" />
-      <nav class="header-navigation">
-          <a class="header-navigation-item" href="./index.html">Home</a>
-          <a class="header-navigation-item" href="introduction/conceitos.html">Tutorial</a>
-          <a class="header-navigation-item" href="./videos.html">Vídeos</a>
-          <a class="header-navigation-item" href="about.html">Sobre Nós</a> 
+      <nav class="menu">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"> 
+            <img class="menu-icon" src="assets/icons/more.png" />
+        </label>
+        <img class="logo" src="assets/images/PI-logo.png"/>
+        <ul class="menu-lista">
+            <li class="menu-lista-item"><a class="active menu-item" href="./index.html">Home</a></li>
+            <li class="menu-lista-item"><a class="menu-item" href="introduction/conceitos.html">Tutorial</a></li>
+            <li class="menu-lista-item"><a class="menu-item" href="./videos.html">Vídeos</a></li>
+            <li class="menu-lista-item"><a class="menu-item" href="about.html">Sobre Nós</a> </li>
+        </ul>
       </nav>
    </header>
     <main>
@@ -35,20 +42,20 @@
             </section>
             <img class="figure" src="assets/images/computador.png" />
         </div>
-        <div class="row row-center section2">
+        <div class="row-center">
             <img class="forma" src="assets/images/forma2.png" />
             <section class="section2">
                 <h2>Aprenda como...</h2>
                 <p>desenvolver elementos de interface gráfica</p>
-                <a class="button-link" href="#">Criar Botões</a>
-                <a class="button-link" href="#">Criar Input Fields</a>
-                <a class="button-link" href="#">Criar Checkbox</a>
+                <a class="button-link section2" href="./components/label.html">Criar Botões</a>
+                <a class="button-link section2" href="./components/checkbox.html">Criar Checkbox</a>
+                <a class="button-link section2" href="./components/radio-button.html">Criar Radio Button</a>
                 <p>E muito mais!</p>
             </section>
         </div>
     </main>
     <footer>
-      <img src="assets/images/PI-logo.png" />
-      <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="assets/images/github.png"/> </a>
+      <img class="logo" src="assets/images/PI-logo.png" />
+      <a class="git-icon" href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="assets/images/github.png"/> </a>
   </footer>
 </body>

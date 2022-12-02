@@ -1,11 +1,23 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+
 .content {
     display: flex;
     flex-direction: row;
 }
 
 article {
-
+    margin-top: 6%;
     padding: 0% 4%;
 
     width: 100%;
+}
+
+@media (max-width: 800px){
+    article{
+        margin-top: 20%;
+    }
 }

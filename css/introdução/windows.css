@@ -22,3 +22,12 @@ article {
     margin-top: -2%;
     width: 60%;
 }
+
+@media (max-width: 800px){
+    .print{
+        width: 20%;
+    }
+    article{
+        margin-top: 20%;
+    }
+}

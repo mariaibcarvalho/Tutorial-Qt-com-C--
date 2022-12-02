@@ -12,46 +12,61 @@
     <link rel="stylesheet" href="../css/components/scroll.css">
     <link rel="stylesheet" href="../css/content/text.css">
     <link rel="stylesheet" href="../css/foooter.css">
+    <link rel="stylesheet" href="../css/button-top.css">
 </head>
 <body>
-    <section class="menu">
+    <section class="menu-rail">
         <nav class="category">
-            <h3 class="menu-item-title">
-                Introdução
-            </h3>
-            <a class="menu-item-element" href="../introduction/conceitos.html">Introdução (Conceitos) </a>
-            <a class="menu-item-element" href="../introduction/windows.html">Instalação no Windows</a>
-            <a class="menu-item-element" href="../introduction/linux.html">Instalação no Linux</a>
-            <hr>
-            <h3 class="menu-item-title">Componentes</h3>
-            <a class="menu-item-element" href="../components/label.html">Label, Botão e Input Fields</a>
-            <a class="menu-item-element" href="../components/checkbox.html">Checkbox</a>
-            <a class="menu-item-element" href="../components/combobox.html">Combobox</a>
-            <a class="menu-item-element" href="../components/radio-button.html">Radio Button</a>
-            <a class="menu-item-element" href="../components/slider.html">Slider</a>
-            <a class="menu-item-element" href="../components/spin.html">Spin</a>
-            <a class="menu-item-element" href="#">Toggle</a>
-            <a class="menu-item-element" href="../components/imagem.html">Imagem</a>
-            <a class="menu-item-element" href="../components/tabs.html">Tabs</a>
-            <a class="menu-item-element" href="../components/listview.html">List View</a>
-            <a class="menu-item-element" href="../components/progressbar.html">Barra de Progresso</a>
-            <a class="menu-item-element" href="#">Picker</a>
-            <a class="menu-item-element" href="../components/menu-separador.html">Menu e Separadores</a>
-            <a class="menu-item-element" href="../components/scroll.html">Scroll</a>
-            <a class="menu-item-element" href="../components/Tabela.html">Tabela</a>
-            <a class="menu-item-element" href="../components/pop-up.html">Janela de diálogo</a>
-            <a class="menu-item-element" href="../components/drag-drop.html">Drag and Drop</a>
-            <a class="menu-item-element" href="../components/graficos.html">Gráficos</a>
+            <input type="checkbox" id="check-rail">
+            
+            <ul>
+                <h3 class="menu-item-title">
+                    Introdução
+                </h3>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../introduction/conceitos.html">Introdução (Conceitos) </a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../introduction/windows.html">Instalação no Windows</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../introduction/linux.html">Instalação no Linux</a></li>
+                <hr>
+                <h3 class="menu-item-title">Componentes</h3>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/label.html">Label, Botão e Input Fields</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/checkbox.html">Checkbox</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/combobox.html">Combobox</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/radio-button.html">Radio Button</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/slider.html">Slider</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/spin.html">Spin</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="#">Toggle</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/imagem.html">Imagem</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/tabs.html">Tabs</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/listview.html">List View</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/progressbar.html">Barra de Progresso</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="#">Picker</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/menu-separador.html">Menu e Separadores</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/scroll.html">Scroll</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/Tabela.html">Tabela</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/pop-up.html">Janela de diálogo</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/drag-drop.html">Drag and Drop</a></li>
+                <li class="menu-item-element"><a  class="menu-item-link" href="../components/graficos.html">Gráficos</a></li>
+            </ul>
+            <label for="check-rail" class="checkbutton"> 
+                <img class="menu-rail-icon" src="../assets/icons/menu.png" />
+                Componentes
+            </label>
         </nav>
     </section>
-     <header class="header-navigation-with-shadow">
-        <img src="../assets/images/PI-logo.png" />
-        <nav class="header-navigation">
-            <a class="header-navigation-item" href="../index.html">Home</a>
-            <a class="header-navigation-item" href="../introduction/conceitos.html">Tutorial</a>
-            <a class="header-navigation-item" href="../videos.html">Vídeos</a>
-            <a class="header-navigation-item" href="../about.html">Sobre Nós</a> 
-        </nav>
+    <header>
+        <nav class="menu header-navigation-with-shadow">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn"> 
+                <img class="menu-icon" src="../assets/icons/more.png" />
+            </label>
+            <img class="logo" src="../assets/images/PI-logo.png"/>
+            <ul class="menu-lista">
+                <li class="menu-lista-item"><a class="menu-item" href="/index.html">Home</a></li>
+                <li class="menu-lista-item"><a class="active menu-item" href="./conceitos.html">Tutorial</a></li>
+                <li class="menu-lista-item"><a class="menu-item" href="/videos.html">Vídeos</a></li>
+                <li class="menu-lista-item"><a class="menu-item" href="/about.html">Sobre Nós</a> </li>
+            </ul>
+          </nav>
      </header>
      <main class="content">
         <article>
@@ -158,6 +173,7 @@ MainWindow::~MainWindow()
                 <a class="action" href="../components/Tabela.html">Próximo <img class="action-icon" src="../assets/icons/arrow-right.png" /></a>
             </aside>
         </article>
+        <a class="button-top" href="#"><img class="button-icon" src="../assets/icons/arrow-up.png" /> </a> 
      </main>
      <footer class="footer-with-shadow">
         <img src="../assets/images/PI-logo.png" />

@@ -32,3 +32,24 @@
 
     background-color: #FF886B;
 }
+
+.action:hover{
+    width: 11%;
+    border-radius: 6%;
+    padding: 5;
+    background-color: #eeeeee;
+}
+
+@media (max-width: 800px){
+    .actions{
+        margin: 8% 0%;
+    }
+
+    .action:hover{
+        width: 0;
+        padding: 0;
+        background-color: none;
+        border-radius: 0;
+    }
+
+}

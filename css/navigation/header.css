@@ -1,52 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,700&family=Roboto+Slab:wght@700&display=swap');
 
-header {
-    position: fixed;
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
 
-    top: 0;
-    left: 0;
-
-    padding: 0% 1%;
-
+.menu{
+	position: fixed;
+    background-color: white;
     height: 72px;
     width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-
-    background-color: #ffffff;
 }
 
-.header-navigation-with-shadow {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.10);
+.header-navigation-with-shadow{
+	box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.10);
 }
 
-.header-navigation {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo{
+    display: inline-block;
+    margin-left: 1%;
 }
 
-.header-navigation-item {
-    margin: 0% 2%;
+.menu .menu-lista{
+    float: right;
+	margin-right: 20px;
+}
 
-    font-size: large;
-    text-decoration: none;
+.menu .menu-lista .menu-lista-item{
+	display: inline-block;
+	line-height: 80px;
+	margin: 0 5px;
+}
+
+.menu .menu-lista .menu-lista-item .menu-item{
+	color: black;
+	font-size: 18px;
     font-weight: 500;
     font-family: 'Roboto Flex', sans-serif;
-
-
-    color: black;
+	padding: 8px 13px;
+	border-radius: 24px;
 }
 
-main {
-    margin-top: 72px;
+.active{
+	border: 2px solid #53BEA6;
+}
+
+.menu-item:hover{
+	background: #53BEA6;
+	transition: 0.5s;
+}
+
+.checkbtn{
+	font-size: 30px;
+	color: white;
+	float: right;
+    
+	line-height: 80px;
+	margin-right: 40px;
+	cursor: pointer;
+	display: none;
+}
+#check{
+	display: none;
+}
+
+@media (max-width: 800px){
+    .logo{
+        width: 30%;
+        margin-left: 4%;
+    }   
+
+    .menu{
+        margin-bottom: 0;
+    }
+
+    .menu-icon{
+        width: 80%;
+        margin-bottom: 0;
+		margin-top: 24%;
+    }
+
+    .menu .menu-lista .menu-lista-item .menu-item{
+        font-size: 20px;
+    }
+
+    .checkbtn{
+        display: block;
+    }
+
+    .menu-lista{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: #53BEA6;
+		top: 72px;
+		left: -100%;
+		text-align: center;
+		
+		transition: all .5s;
+	}
+
+	.menu .menu-lista .menu-lista-item{
+		display: block;
+		margin: 50px 0;
+		line-height: 30px;
+	}
+
+	.menu-item:hover{
+		color: white;
+	}
+
+	#check:checked ~ ul {
+		left: 0;
+	}
+
 }

@@ -16,26 +16,32 @@
 </head>
 <body>
     <header>
-        <img src="assets/images/PI-logo.png" />
-        <nav class="header-navigation">
-            <a class="header-navigation-item" href="./index.html">Home</a>
-            <a class="header-navigation-item" href="./introduction/conceitos.html">Tutorial</a>
-            <a class="header-navigation-item" href="./videos.html">Vídeos</a>
-            <a class="header-navigation-item" href="./about.html">Sobre Nós</a> 
-        </nav>
+        <nav class="menu">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn"> 
+                <img class="menu-icon" src="assets/icons/more.png" />
+            </label>
+            <img class="logo" src="assets/images/PI-logo.png" />
+            <ul class="menu-lista">
+                <li class="menu-lista-item"><a class="menu-item" href="./index.html">Home</a></li>
+                <li class="menu-lista-item"><a class="menu-item" href="introduction/conceitos.html">Tutorial</a></li>
+                <li class="menu-lista-item"><a class="active menu-item" href="./videos.html">Vídeos</a></li>
+                <li class="menu-lista-item"><a class="menu-item" href="about.html">Sobre Nós</a> </li>
+            </ul>
+          </nav>
      </header>
      <main>
-         <section class="text">
-                <h1><strong> Aprenda Qt com C++ Por Vídeo!!</strong></h1>
-                <p>Fizemos o tutorial em formato de vídeo também, então caso prefira esse formato, assista nosso vídeo <br/>
-                de introdução e clique no botão para ir direto até a playlist.</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/F5nVBhhMxQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <a class="button-playlist" href="https://www.youtube.com/playlist?list=PLfDv6q3DUHrZ4ayqJvj4O49tPA8kEFOSJ
-                " target="_blank">Confira a Playlist <img class="arrow" src="./assets/icons/arrow_forward_FILL0_wght400_GRAD0_opsz48.png"> </a>
-        </section>
+        <h1 class="item1"><strong> Aprenda Qt com C++ Por Vídeo!!</strong></h1>
 
+        <p class="item2">Fizemos o tutorial em formato de vídeo também, então caso prefira esse formato, assista nosso vídeo
+            de introdução e clique no botão para ir direto até a playlist.</p>
+
+        <iframe class="item3" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLfDv6q3DUHraeNn25cwkQX4zdTo8LlG-J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         
+        <a class="item4" href="https://www.youtube.com/playlist?list=PLfDv6q3DUHrZ4ayqJvj4O49tPA8kEFOSJ
+            " target="_blank">Confira a Playlist <img class="arrow" src="./assets/icons/arrow_forward_FILL0_wght400_GRAD0_opsz48.png"> </a>
      </main>
+
      <footer>
         <img src="assets/images/PI-logo.png" />
         <a href="https://github.com/mariaibcarvalho/Tutorial-Qt-com-C--" target="_blank"> <img src="assets/images/github.png"/> </a>

@@ -11,14 +11,20 @@
     <link rel="stylesheet" href="css/about/about.css">
 </head>
 <body>
-    <header class="header-navigation-with-shadow">
-        <img  src="assets/images/PI-logo.png"/>
-        <nav  class="header-navigation">
-            <a class="header-navigation-item" href="./index.html">Home</a>
-            <a class="header-navigation-item" href="./introduction/conceitos.html">Tutorial</a>
-            <a class="header-navigation-item" href="./videos.html">Vídeos</a>
-            <a class="header-navigation-item" href="./about.html">Sobre Nós</a> 
-        </nav>
+    <header>
+        <nav class="header-navigation-with-shadow menu"> 
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn"> 
+                <img class="menu-icon" src="assets/icons/more.png" />
+            </label>
+            <img class="logo" src="assets/images/PI-logo.png"/>
+            <ul class="menu-lista">
+                <li class="menu-lista-item"><a class="menu-item" href="./index.html">Home</a></li>
+                <li class="menu-lista-item"><a class="menu-item"href="introduction/conceitos.html">Tutorial</a></li>
+                <li class="menu-lista-item"><a class="menu-item" href="./videos.html">Vídeos</a></li>
+                <li class="menu-lista-item"><a class="active menu-item" href="about.html">Sobre Nós</a> </li>
+            </ul>
+          </nav>
     </header>
     <main>
         <h1 class="title">Discentes</h1>
@@ -52,8 +58,8 @@
                 </p>
             </div>
         </section>
-        <h1 class="title">Docente</h1>
-        <h2 class="sub-title">Professor da Universidade Federal do Ceará responsável pelo projeto</h2>
+        <h1 class="title">Docentes</h1>
+        <h2 class="sub-title">Professores da Universidade Federal do Ceará responsáveis pelo projeto</h2>
         <section class="person person-image-left">
             <img class="person-image" src="assets/images/persons/italo.jpeg" />
             <div class="person-name person-name-right" style="background-color: #FFF0D1;">
@@ -61,6 +67,15 @@
                 <p class="person-name-text">
                     Professor e Coordenador do Curso de Sistemas de Informação.
                     
+                </p>
+            </div>
+        </section>
+        <section class="person person-image-right">
+            <img class="person-image" src="assets/images/persons/amanda1.jpeg" />
+            <div class="person-name person-name-left" style="background-color: #D1EEFF">
+                <h3 class="person-name-title">Amanda Drielly Pires Venceslau</h3>
+                <p class="person-name-text">
+                    Professora orientadora do Projeto Integrador II.
                 </p>
             </div>
         </section>

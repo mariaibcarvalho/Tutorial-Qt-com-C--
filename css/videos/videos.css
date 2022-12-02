@@ -1,39 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&family=Roboto+Slab:wght@700&display=swap');
 
-
-.text{
+main{
+    width: 100%;
     background-color: #FFF0D1;
-    
+
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
+    align-items: center;
 }
 
-h1{
-    margin-top: 4%;
-    margin-bottom: 3%;
+.item1{
     font-size: xx-large;
     font-weight: bold;
     font-family: 'Roboto Slab', serif;
+
+    margin-top: 8%;
 }
 
-p{
-    margin-bottom: 2%;
+.item2{
+    width: 60%;
     text-align: center;
     font-size: large;
     font-weight: 400;
-
     font-family: 'Roboto Flex', sans-serif;
+    
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
+   
 
-.button-playlist{
-    margin-top: 3.5%;
-    margin-bottom: 6%;
-    padding: 1% 2%;
 
-    width: 180px;
-    height: 18px;
+.item4{
+    width: 200px;
+    height: 34px;
 
     border: 0px solid #fff;
     border-radius: 24px;
@@ -49,10 +50,40 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
 .arrow{
     margin-left: 8%;
     width: 24px;
     height: 24px;
+}
+
+@media (max-width: 800px){
+    .item1{
+        font-size: 20px;
+
+        margin-top: 36%;
+        margin-bottom: 2%;
+    }
+
+    .item2{
+        width: 80%;
+        font-size: 16px;
+
+        margin-bottom: 10%;
+        
+    }
+
+    .item3{
+        width: auto;
+        height: auto;
+    }
+
+    .item4{
+        margin-top: 10%;
+        margin-bottom: 30%;
+    }
 }

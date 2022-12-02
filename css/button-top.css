@@ -1,0 +1,26 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+.button-top{
+    text-decoration: none;
+    background-color: #FF886B;
+
+    padding: 10px;
+    border-radius: 100%;
+
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.button-icon{
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 800px){
+    .button-top{
+        display: none;
+    }
+}
